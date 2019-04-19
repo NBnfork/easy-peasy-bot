@@ -82,13 +82,16 @@ controller.on('rtm_close', function (bot) {
 // BEGIN EDITING HERE!
 
 controller.on('bot_channel_join', function (bot, message) {
-    bot.reply(message, "I'm here!")
+    bot.reply(message, "I'm here! Want to play Texas Hold'em? type \"Start Game\"");
 });
 
-controller.hears('hello', 'direct_message', function (bot, message) {
-    bot.reply(message, 'Hello!');
+controller.hears(['hello'], ['direct_message', 'direct_mention', 'mention'], function (bot, message) {
+    bot.reply(message, 'Hello! Want to play Texas Hold\'em? type \"Start Game\"');
 });
 
+controller.hears('Start Game', function (bot, message) {
+    bot.reply(message, 'start game command received!');
+});
 
 /**
  * AN example of what could be:
